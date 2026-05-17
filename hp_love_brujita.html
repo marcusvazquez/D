@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Para mi Brujita Favorita ⚡💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;-webkit-tap-highlight-color:transparent;}
+body{background:#050010;font-family:'Cinzel',serif;}
+
+:root{
+  --pink:#ff69b4;--pink-deep:#ff1493;--pink-light:#ffb3d1;
+  --purple:#e040fb;--gold:#ffd700;
+  --text:#e8c0d0;--text-soft:#c48eb0;--text-muted:#7a4a60;
+}
+
+/* BG */
+.page-bg{
+  background:radial-gradient(ellipse at 18% 12%,#4a0a22 0%,#1c000e 28%,#0e0018 58%,#050010 100%);
+  min-height:100vh;position:relative;overflow:hidden;padding-bottom:40px;
+}
+
+/* WAND TRAIL */
+#wandTrail{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9997;}
+
+/* FLOATING PARTICLES */
+.ptc{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:1;overflow:hidden;}
+.p{position:absolute;animation:floatUp var(--d,8s) ease-in infinite var(--dl,0s);opacity:0;font-size:var(--s,13px);}
+@keyframes floatUp{
+  0%{transform:translateY(100vh) rotate(0deg) scale(.5);opacity:0;}
+  10%{opacity:.85;}85%{opacity:.3;}
+  100%{transform:translateY(-60px) rotate(360deg) scale(.8);opacity:0;}
+}
+
+/* OWLS */
+.owl{position:fixed;font-size:20px;animation:owlFly var(--d,18s) linear infinite var(--dl,0s);top:var(--t,10%);pointer-events:none;z-index:2;opacity:.7;}
+@keyframes owlFly{
+  0%{transform:translateX(-80px);opacity:0;}5%{opacity:.75;}
+  48%{transform:translateX(115vw);opacity:.75;}
+  50%{transform:translateX(115vw) scaleX(-1);opacity:0;}
+  55%{opacity:.55;}
+  98%{transform:translateX(-80px) scaleX(-1);opacity:.55;}
+  100%{transform:translateX(-80px) scaleX(-1);opacity:0;}
+}
+
+/* HEADER */
+.header{position:relative;z-index:10;text-align:center;padding:clamp(28px,8vw,55px) 16px clamp(12px,3vw,24px);}
+
+.crest-wrap{display:inline-block;margin-bottom:10px;animation:crestGlow 3.5s ease-in-out infinite;}
+@keyframes crestGlow{
+  0%,100%{filter:drop-shadow(0 0 8px rgba(255,105,180,.4)) drop-shadow(0 0 18px rgba(224,64,251,.2));}
+  50%{filter:drop-shadow(0 0 18px rgba(255,105,180,.85)) drop-shadow(0 0 36px rgba(224,64,251,.5)) drop-shadow(0 0 55px rgba(255,20,147,.2));}
+}
+
+.bolt-row{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;}
+.bolt{font-size:clamp(20px,5.5vw,34px);animation:boltPulse 2s ease-in-out infinite;display:inline-block;}
+@keyframes boltPulse{
+  0%,100%{filter:drop-shadow(0 0 7px #ff69b4);transform:scale(1) rotate(-6deg);}
+  50%{filter:drop-shadow(0 0 22px #ff1493) drop-shadow(0 0 38px #e040fb);transform:scale(1.22) rotate(6deg);}
+}
+.main-title{
+  font-family:'Cinzel Decorative',cursive;
+  font-size:clamp(18px,5.5vw,36px);
+  color:#ff9ecd;
+  text-shadow:0 0 18px rgba(255,105,180,.5),0 0 38px rgba(224,64,251,.3);
+  animation:glowTitle 3s ease-in-out infinite;
+  line-height:1.2;letter-spacing:clamp(1px,.5vw,3px);
+}
+@keyframes glowTitle{
+  0%,100%{text-shadow:0 0 18px rgba(255,105,180,.5),0 0 38px rgba(224,64,251,.3);}
+  50%{text-shadow:0 0 32px rgba(255,105,180,.9),0 0 58px rgba(224,64,251,.65),0 0 78px rgba(255,20,147,.3);}
+}
+.main-sub{font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(11px,3.4vw,15px);color:#c48eb0;letter-spacing:1px;margin-top:6px;}
+
+/* DIVISOR */
+.div{display:flex;align-items:center;gap:8px;padding:12px 20px;position:relative;z-index:5;}
+.dline{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(255,105,180,.4),transparent);}
+.dsym{color:#ff69b4;font-size:14px;animation:hb 1.4s ease-in-out infinite;display:inline-block;}
+@keyframes hb{0%,100%{transform:scale(1);}50%{transform:scale(1.55);}}
+
+/* CARD BASE */
+.card{position:relative;z-index:5;margin:0 14px;border-radius:16px;border:1px solid rgba(255,105,180,.22);background:rgba(10,0,7,.88);backdrop-filter:blur(6px);overflow:hidden;}
+.card-inner{padding:clamp(14px,4vw,26px);}
+
+/* SHIMMER */
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false;}
+.shimmer{position:absolute;inset:0;border-radius:16px;background:conic-gradient(from var(--a,0deg),transparent 50%,rgba(255,105,180,.45),rgba(224,64,251,.28),transparent);animation:spinB 4s linear infinite;z-index:0;pointer-events:none;}
+@keyframes spinB{to{--a:360deg;}}
+
+/* LETTER */
+.letter-greeting{font-family:'Cinzel Decorative',cursive;font-size:clamp(11px,3.3vw,15px);color:#ffb3d1;margin-bottom:14px;text-align:center;}
+.letter-body{font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(13px,3.8vw,16px);color:#e8c0d0;line-height:2.1;text-align:center;}
+.letter-body b{color:#ff9ecd;font-style:normal;}
+.letter-sig{font-family:'Cinzel Decorative',cursive;font-size:clamp(10px,3vw,13px);color:#e040fb;margin-top:16px;text-align:right;}
+.wand-deco{display:flex;justify-content:center;margin:12px 0;font-size:28px;animation:wandWave 2.2s ease-in-out infinite;}
+@keyframes wandWave{0%,100%{transform:rotate(-14deg);}50%{transform:rotate(14deg) scale(1.1);}}
+
+/* SECTION TITLE */
+.stitle{font-family:'Cinzel Decorative',cursive;font-size:clamp(10px,3vw,13px);color:#c48eb0;text-align:center;letter-spacing:2px;padding:10px 20px 8px;position:relative;z-index:5;}
+
+/* CORAZON */
+.heart-section{position:relative;z-index:5;display:flex;justify-content:center;padding:8px 16px;}
+.big-heart{font-size:clamp(68px,19vw,92px);cursor:pointer;display:inline-block;animation:heartPulse 1.35s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(255,20,147,.7));user-select:none;-webkit-user-select:none;}
+@keyframes heartPulse{
+  0%,100%{transform:scale(1);}14%{transform:scale(1.24);}28%{transform:scale(1.04);}42%{transform:scale(1.16);}70%{transform:scale(1);}
+}
+.heart-msg{font-family:'Cinzel',serif;font-size:clamp(10px,3vw,13px);color:#c48eb0;text-align:center;margin-top:4px;min-height:22px;padding:0 16px;transition:all .3s;}
+
+/* HECHIZOS */
+.spell-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:0 14px;position:relative;z-index:5;}
+.sbtn{
+  background:rgba(0,0,0,.6);border:1px solid rgba(255,105,180,.2);border-radius:12px;
+  padding:14px 6px 12px;cursor:pointer;text-align:center;transition:all .3s;
+  position:relative;overflow:hidden;min-height:84px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.sbtn::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(255,20,147,0),transparent);transition:background .4s;}
+.sbtn:active{border-color:rgba(255,105,180,.75);transform:scale(.96);box-shadow:0 4px 22px rgba(255,20,147,.22);}
+.sbtn:active::before{background:radial-gradient(circle at 50% 0%,rgba(255,20,147,.15),transparent);}
+.sico{font-size:clamp(24px,7vw,30px);display:block;margin-bottom:5px;}
+.sn{font-family:'Cinzel Decorative',cursive;font-size:clamp(8px,2.4vw,10px);color:#ff9ecd;letter-spacing:.5px;display:block;}
+.se{font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(8px,2.4vw,10px);color:#7a4a60;margin-top:2px;display:block;}
+
+/* POPUP */
+.overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;pointer-events:none;transition:opacity .3s;background:rgba(0,0,0,.82);padding:16px;}
+.overlay.on{opacity:1;pointer-events:auto;}
+.popup{
+  background:linear-gradient(145deg,#1a0010,#2c001e,#1a0010);
+  border:2px solid #ff69b4;border-radius:18px;
+  padding:clamp(20px,5vw,30px) clamp(16px,4vw,26px);
+  max-width:92vw;width:100%;text-align:center;
+  box-shadow:0 0 50px rgba(255,20,147,.4),inset 0 0 30px rgba(255,20,147,.05);
+  animation:popIn .4s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes popIn{from{transform:scale(.3) rotate(-10deg);opacity:0;}to{transform:scale(1) rotate(0);opacity:1;}}
+.pico-big{font-size:42px;margin-bottom:8px;display:block;animation:popIco .5s cubic-bezier(.34,1.56,.64,1);}
+@keyframes popIco{from{transform:scale(0) rotate(-20deg);}to{transform:scale(1) rotate(0);}}
+.pname{font-family:'Cinzel Decorative',cursive;font-size:clamp(15px,5vw,22px);color:#ff69b4;text-shadow:0 0 18px rgba(255,20,147,.6);margin-bottom:10px;}
+.pdesc{font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(13px,3.8vw,15px);color:#e8c0d0;line-height:1.95;}
+.pclose{
+  margin-top:18px;padding:10px 26px;background:rgba(255,105,180,.1);
+  border:1px solid rgba(255,105,180,.4);border-radius:10px;
+  color:#ff9ecd;font-family:'Cinzel',serif;font-size:clamp(10px,3vw,12px);
+  cursor:pointer;letter-spacing:1px;transition:all .2s;
+  min-height:44px;display:inline-flex;align-items:center;
+}
+.pclose:active{background:rgba(255,105,180,.28);transform:scale(1.05);}
+
+/* MAPA */
+.map-section{position:relative;z-index:5;padding:0 14px;}
+.map-parchment{
+  background:linear-gradient(135deg,#c8914a,#b87c2a,#9e6518,#88571a);
+  border-radius:14px;padding:14px 12px;
+  border:3px solid #8b6914;position:relative;overflow:hidden;
+  box-shadow:inset 0 0 50px rgba(0,0,0,.45),0 6px 28px rgba(0,0,0,.6);
+}
+.map-grain{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");opacity:.5;pointer-events:none;}
+.map-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 20px,rgba(80,40,0,.14) 20px,rgba(80,40,0,.14) 21px),repeating-linear-gradient(90deg,transparent,transparent 20px,rgba(80,40,0,.14) 20px,rgba(80,40,0,.14) 21px);pointer-events:none;}
+.map-worn{position:absolute;inset:0;background:radial-gradient(ellipse at 5% 5%,rgba(50,20,0,.45),transparent 28%),radial-gradient(ellipse at 95% 5%,rgba(50,20,0,.45),transparent 28%),radial-gradient(ellipse at 5% 95%,rgba(50,20,0,.45),transparent 28%),radial-gradient(ellipse at 95% 95%,rgba(50,20,0,.45),transparent 28%);pointer-events:none;}
+.map-t{font-family:'Cinzel Decorative',cursive;font-size:clamp(11px,3.4vw,15px);color:#2a0e00;text-align:center;position:relative;z-index:1;margin-bottom:2px;text-shadow:1px 1px 0 rgba(255,220,140,.35);}
+.map-q{font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(10px,2.8vw,12px);color:#4a2500;text-align:center;position:relative;z-index:1;margin-bottom:10px;}
+.map-canvas-wrap{position:relative;height:130px;z-index:1;}
+#mapCanvas{position:absolute;inset:0;width:100%;height:100%;}
+
+/* CAULDRON */
+.cauldron-section{position:relative;z-index:5;padding:0 14px;}
+.cauldron-wrap{background:rgba(8,0,6,.92);border-radius:14px;border:1px solid rgba(255,105,180,.18);padding:16px;text-align:center;position:relative;overflow:hidden;}
+.cauldron-svg-wrap{display:flex;justify-content:center;margin:6px 0;}
+.potion-label{font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(11px,3.2vw,14px);color:#c48eb0;margin-top:8px;line-height:1.75;}
+.potion-label b{color:#ff9ecd;}
+
+/* EASTER EGGS */
+.eggs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 14px;position:relative;z-index:5;}
+.egg{background:rgba(0,0,0,.6);border:1px solid rgba(255,105,180,.15);border-radius:12px;padding:12px 5px 10px;text-align:center;cursor:pointer;transition:all .35s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden;min-height:82px;}
+.egg.open{border-color:#ff69b4;background:rgba(255,20,147,.08);box-shadow:0 0 20px rgba(255,20,147,.2);}
+.eico{font-size:clamp(18px,5vw,22px);display:block;transition:transform .4s;}
+.egg.open .eico{transform:scale(1.32) rotate(12deg);}
+.elbl{font-size:clamp(8px,2.4vw,9px);color:#c48eb0;font-family:'Cinzel',serif;letter-spacing:.4px;margin-top:4px;}
+.ehint{font-size:clamp(8px,2.4vw,9px);color:#5a3a4a;font-family:'Cinzel',serif;}
+.etxt{font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(8px,2.3vw,9px);color:#ffb3d1;margin-top:5px;line-height:1.55;display:none;}
+.egg.open .etxt{display:block;animation:fadeIn .4s ease;}
+.egg.open .ehint{display:none;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+
+/* SNITCH */
+.snitch-section{position:relative;z-index:5;padding:0 14px;}
+.snitch-arena{
+  position:relative;height:clamp(155px,44vw,210px);
+  background:radial-gradient(ellipse at 50% 50%,rgba(22,4,16,.92),rgba(4,0,14,.98));
+  border-radius:14px;border:1px solid rgba(255,105,180,.2);overflow:hidden;
+  cursor:crosshair;touch-action:none;
+}
+.arena-canvas{position:absolute;inset:0;width:100%;height:100%;}
+#snitchEl{position:absolute;width:64px;height:44px;cursor:pointer;transform:translate(-50%,-50%);z-index:3;touch-action:none;}
+.s-ball{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:clamp(26px,7.5vw,34px);height:clamp(26px,7.5vw,34px);
+  background:radial-gradient(circle at 32% 28%,#fffde0 0%,#ffd700 38%,#c8960b 72%,#8b6000 100%);
+  border-radius:50%;
+  box-shadow:0 0 12px rgba(255,215,0,.9),0 0 28px rgba(255,180,50,.5),0 0 50px rgba(255,100,180,.3);
+  z-index:2;
+}
+.s-wing{position:absolute;top:50%;width:26px;height:16px;border-radius:50%;z-index:1;}
+.s-wing-l{right:calc(50% + 10px);transform:translateY(-50%);background:rgba(210,240,255,.32);border:1px solid rgba(210,240,255,.65);transform-origin:right center;}
+.s-wing-r{left:calc(50% + 10px);transform:translateY(-50%);background:rgba(210,240,255,.32);border:1px solid rgba(210,240,255,.65);transform-origin:left center;}
+.snitch-msg{font-family:'Cinzel Decorative',cursive;font-size:clamp(9px,3vw,12px);color:#ffd700;text-align:center;margin-top:8px;min-height:22px;transition:all .3s;}
+.snitch-tip{font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(10px,3vw,12px);color:#7a4a60;text-align:center;margin-top:3px;}
+
+/* CONFETTI */
+.ch{position:fixed;pointer-events:none;z-index:9998;font-size:var(--s,16px);animation:cfFall var(--d,1.5s) ease-in forwards;left:var(--x,50%);top:-22px;}
+@keyframes cfFall{0%{transform:translateY(0) rotate(0) scale(1);opacity:1;}100%{transform:translateY(110vh) rotate(720deg) scale(.2);opacity:0;}}
+
+/* CASTLE */
+.castle-section{position:relative;z-index:4;text-align:center;margin-top:10px;pointer-events:none;}
+
+/* ALWAYS */
+.always-section{position:relative;z-index:5;padding:18px 16px;text-align:center;}
+.always-word{
+  font-family:'Cinzel Decorative',cursive;
+  font-size:clamp(38px,12vw,68px);
+  color:transparent;
+  background:linear-gradient(135deg,#ff69b4,#e040fb,#ff9ecd);
+  -webkit-background-clip:text;background-clip:text;
+  animation:alwaysGlow 3s ease-in-out infinite;letter-spacing:4px;
+}
+@keyframes alwaysGlow{
+  0%,100%{filter:drop-shadow(0 0 10px rgba(255,105,180,.5));}
+  50%{filter:drop-shadow(0 0 26px rgba(255,105,180,.95)) drop-shadow(0 0 50px rgba(224,64,251,.5));}
+}
+.always-sub{font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(12px,3.5vw,16px);color:#7a4a60;margin-top:5px;}
+
+/* FOOTER */
+.final-quote{position:relative;z-index:5;padding:clamp(14px,4vw,22px) 24px clamp(30px,8vw,50px);}
+.fq{font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(14px,4vw,18px);color:#c48eb0;line-height:2;border-left:2px solid rgba(255,105,180,.4);padding-left:14px;text-align:left;max-width:350px;margin:0 auto;}
+.fqa{font-family:'Cinzel',serif;font-size:clamp(10px,3vw,12px);color:#7a4a60;margin-top:10px;text-align:right;letter-spacing:1px;max-width:350px;margin-left:auto;margin-right:auto;padding-right:2px;}
+</style>
+</head>
+<body>
+
+<canvas id="wandTrail"></canvas>
+<div class="page-bg">
+<div class="ptc" id="ptc"></div>
+<div class="owl" style="--d:19s;--dl:0s;--t:7%">🦉</div>
+<div class="owl" style="--d:26s;--dl:9s;--t:18%">🦉</div>
+<div class="owl" style="--d:21s;--dl:16s;--t:4%">🦉</div>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<div class="header">
+  <div class="crest-wrap">
+    <svg width="76" height="80" viewBox="0 0 80 82" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="cg" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="rgba(255,105,180,.18)"/>
+          <stop offset="100%" stop-color="rgba(224,64,251,.05)"/>
+        </radialGradient>
+      </defs>
+      <path d="M40 6 L70 18 L70 52 Q70 68 40 76 Q10 68 10 52 L10 18 Z" fill="url(#cg)" stroke="rgba(255,105,180,.55)" stroke-width="1.5"/>
+      <line x1="40" y1="6" x2="40" y2="76" stroke="rgba(255,105,180,.3)" stroke-width="1"/>
+      <line x1="10" y1="42" x2="70" y2="42" stroke="rgba(255,105,180,.3)" stroke-width="1"/>
+      <text x="40" y="36" font-size="16" text-anchor="middle" fill="#ff9ecd" opacity=".9">⚡</text>
+      <text x="40" y="60" font-size="13" text-anchor="middle" fill="#ff69b4" opacity=".8">💖</text>
+      <text x="25" y="30" font-size="9" text-anchor="middle" fill="#c48eb0" opacity=".7">🦁</text>
+      <text x="55" y="30" font-size="9" text-anchor="middle" fill="#c48eb0" opacity=".7">🦅</text>
+      <text x="25" y="58" font-size="9" text-anchor="middle" fill="#c48eb0" opacity=".6">🦡</text>
+      <text x="55" y="58" font-size="9" text-anchor="middle" fill="#c48eb0" opacity=".6">🐍</text>
+      <!-- stars on corners -->
+      <circle cx="10" cy="18" r="2" fill="rgba(255,105,180,.4)"/>
+      <circle cx="70" cy="18" r="2" fill="rgba(255,105,180,.4)"/>
+    </svg>
+  </div>
+  <div class="bolt-row">
+    <span class="bolt">⚡</span>
+    <div class="main-title">Para mi Brujita Favorita</div>
+    <span class="bolt">⚡</span>
+  </div>
+  <div class="main-sub">Un mensaje del corazón más mágico de Hogwarts</div>
+</div>
+
+<div class="div"><div class="dline"></div><span class="dsym">♥</span><div class="dline"></div></div>
+
+<!-- ═══════════ CARTA ═══════════ -->
+<div class="card">
+  <div class="shimmer"></div>
+  <div class="card-inner" style="position:relative;z-index:1;">
+    <div class="letter-greeting">Mi amor, más poderosa que cualquier hechizo,</div>
+    <div class="wand-deco">🪄✨</div>
+    <div class="letter-body">
+      Si el <b>Sombrero Seleccionador</b> me hubiera preguntado<br>
+      qué quería en la vida,<br>
+      habría susurrado tu nombre — y solo tu nombre.<br><br>
+
+      No necesito la <b>Piedra Filosofal</b> para vivir eternamente —<br>
+      cada momento contigo ya es inmortal.<br><br>
+
+      Eres mi <b>Mapa del Merodeador</b>: siempre me guías a casa,<br>
+      sin importar cuán perdido esté en este mundo.<br><br>
+
+      Si tuviera que enfrentar a un <b>Boggart</b>,<br>
+      mi mayor miedo sería un mundo sin ti.<br><br>
+
+      La <b>Amortentia</b> huele diferente para cada persona —<br>
+      la mía siempre ha olido a ti, brujita. Siempre.
+    </div>
+    <div class="letter-sig">— Tu mago para siempre 🪄✨</div>
+  </div>
+</div>
+
+<div class="div"><div class="dline"></div><span class="dsym">♥</span><div class="dline"></div></div>
+
+<!-- ═══════════ CORAZON ═══════════ -->
+<div class="heart-section">
+  <div style="text-align:center">
+    <div class="big-heart" id="bigHeart" onclick="heartClick()" ontouchstart="heartClick();return false;">💖</div>
+    <div class="heart-msg" id="heartMsg">Toca el corazón ♥</div>
+  </div>
+</div>
+
+<div class="div"><div class="dline"></div><span class="dsym">✨</span><div class="dline"></div></div>
+
+<!-- ═══════════ HECHIZOS ═══════════ -->
+<div class="stitle">✦ Hechizos de Amor ✦</div>
+<div class="spell-grid">
+  <div class="sbtn" onclick="openSpell('💕','Amore Infinitum','El hechizo más poderoso del mundo mágico — más fuerte que Avada Kedavra según el mismísimo Dumbledore. «El amor es la magia más antigua y la más inquebrantable de todas.» El mío por ti es exactamente eso: eterno.')">
+    <span class="sico">💕</span><span class="sn">Amore Infinitum</span><span class="se">Amor eterno</span>
+  </div>
+  <div class="sbtn" onclick="openSpell('🌹','Amortentia','La poción de amor más poderosa del mundo. Huele diferente para cada persona — siempre a lo que más amas. La mía siempre ha olido a ti, brujita. Siempre.')">
+    <span class="sico">🌹</span><span class="sn">Amortentia!</span><span class="se">Poción de amor</span>
+  </div>
+  <div class="sbtn" onclick="openSpell('🦌','Expecto Patronum','Tu Patronus toma la forma de lo que más amas en el mundo. Harry tenía un ciervo. El mío tiene exactamente tu forma — porque tú ahuyentas toda oscuridad de mi vida.')">
+    <span class="sico">🦌</span><span class="sn">Expecto Patronum</span><span class="se">Protección pura</span>
+  </div>
+  <div class="sbtn" onclick="openSpell('✨','Lumos Maxima','Ilumina la oscuridad más profunda. Ningún Dementor puede robarme la alegría ni un solo recuerdo feliz mientras estás conmigo. Tú eres mi Patronus y mi luz, brujita.')">
+    <span class="sico">✨</span><span class="sn">Lumos Maxima!</span><span class="se">Mi luz eres tú</span>
+  </div>
+  <div class="sbtn" onclick="openSpell('🪄','Accio Mi Amor','El hechizo que convoca lo que más deseas en el mundo. Si pudiera usarlo, te convocaría cada vez que te extraño. Y te extraño... absolutamente siempre.')">
+    <span class="sico">🪄</span><span class="sn">Accio Mi Amor!</span><span class="se">Te convoco a ti</span>
+  </div>
+  <div class="sbtn" onclick="openSpell('🧠','Obliviate... Nunca','Hermione lo usó para proteger a sus padres borrando su memoria. Yo nunca lo usaría contigo — quiero recordar absolutamente cada segundo que hemos vivido. Cada instante es un tesoro.')">
+    <span class="sico">🧠</span><span class="sn">Obliviate... Nunca</span><span class="se">No olvidaré nada</span>
+  </div>
+</div>
+
+<div class="div" style="margin-top:14px"><div class="dline"></div><span class="dsym">🗺️</span><div class="dline"></div></div>
+
+<!-- ═══════════ MAPA ═══════════ -->
+<div class="stitle">✦ El Mapa del Merodeador ✦</div>
+<div class="map-section">
+  <div class="map-parchment">
+    <div class="map-grain"></div><div class="map-lines"></div><div class="map-worn"></div>
+    <div class="map-t">HOGWARTS — El Mapa del Amor</div>
+    <div class="map-q">«Solemnemente juro que mis intenciones son las mejores»</div>
+    <div class="map-canvas-wrap"><canvas id="mapCanvas"></canvas></div>
+  </div>
+</div>
+
+<div class="div" style="margin-top:14px"><div class="dline"></div><span class="dsym">🧪</span><div class="dline"></div></div>
+
+<!-- ═══════════ CAULDRON ═══════════ -->
+<div class="stitle">✦ Amortentia — La Poción del Amor ✦</div>
+<div class="cauldron-section">
+  <div class="cauldron-wrap">
+    <div class="cauldron-svg-wrap">
+      <svg id="cauldronSvg" width="220" height="175" viewBox="0 0 220 175" xmlns="http://www.w3.org/2000/svg">
+        <!-- STEAM -->
+        <ellipse id="s1" cx="82" cy="32" rx="15" ry="11" fill="rgba(255,105,180,.15)"/>
+        <ellipse id="s2" cx="110" cy="18" rx="19" ry="13" fill="rgba(224,64,251,.12)"/>
+        <ellipse id="s3" cx="138" cy="30" rx="15" ry="11" fill="rgba(255,105,180,.15)"/>
+        <!-- Steam hearts rising -->
+        <text id="sh1" x="82" y="48" font-size="14" text-anchor="middle" fill="rgba(255,105,180,.55)">💕</text>
+        <text id="sh2" x="138" y="44" font-size="11" text-anchor="middle" fill="rgba(224,64,251,.5)">✨</text>
+        <!-- CAULDRON LEGS -->
+        <rect x="58" y="155" width="12" height="18" rx="4" fill="#3a2008"/>
+        <rect x="150" y="155" width="12" height="18" rx="4" fill="#3a2008"/>
+        <!-- CAULDRON BODY -->
+        <path d="M30 108 Q28 152 110 165 Q192 152 190 108 L180 96 Q155 82 110 82 Q65 82 40 96 Z" fill="#1a0e04" stroke="#7b5018" stroke-width="2.5"/>
+        <!-- CAULDRON SHADOW UNDER -->
+        <ellipse cx="110" cy="162" rx="78" ry="10" fill="rgba(0,0,0,.35)"/>
+        <!-- CAULDRON RIM -->
+        <ellipse cx="110" cy="96" rx="72" ry="24" fill="#22120a" stroke="#9b7020" stroke-width="3"/>
+        <!-- POTION SURFACE -->
+        <ellipse id="potionSurface" cx="110" cy="98" rx="66" ry="20" fill="#4a0030"/>
+        <!-- BUBBLES -->
+        <circle id="b1" cx="90" cy="100" r="6" fill="rgba(255,20,147,.4)"/>
+        <circle id="b2" cx="118" cy="96" r="8" fill="rgba(224,64,251,.32)"/>
+        <circle id="b3" cx="100" cy="105" r="5" fill="rgba(255,105,180,.42)"/>
+        <circle id="b4" cx="130" cy="102" r="4" fill="rgba(180,30,255,.38)"/>
+        <!-- POTION SHIMMER -->
+        <ellipse cx="110" cy="93" rx="38" ry="9" fill="rgba(255,100,200,.07)"/>
+        <!-- CAULDRON HANDLE LEFT -->
+        <path d="M30 108 Q16 96 20 78 Q24 60 38 94" fill="none" stroke="#7b5018" stroke-width="5" stroke-linecap="round"/>
+        <!-- CAULDRON HANDLE RIGHT -->
+        <path d="M190 108 Q204 96 200 78 Q196 60 182 94" fill="none" stroke="#7b5018" stroke-width="5" stroke-linecap="round"/>
+        <!-- CAULDRON SHINE -->
+        <path d="M44 120 Q38 138 52 150" stroke="rgba(255,200,100,.18)" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <!-- LITTLE STARS AROUND -->
+        <text x="22" y="92" font-size="10" fill="rgba(255,215,0,.35)">✦</text>
+        <text x="194" y="88" font-size="10" fill="rgba(255,215,0,.3)">✦</text>
+        <text x="108" y="70" font-size="9" fill="rgba(255,105,180,.3)">✦</text>
+      </svg>
+    </div>
+    <div class="potion-label">
+      Ingredientes: <b>Rosas de invierno</b>, <b>Escamas de dragón rosa</b>,<br>
+      <b>Pelo de unicornio dorado</b> y una pizca de <b>tu sonrisa</b> 🌹<br>
+      — Huele exactamente a ti —
+    </div>
+  </div>
+</div>
+
+<div class="div" style="margin-top:14px"><div class="dline"></div><span class="dsym">🔮</span><div class="dline"></div></div>
+
+<!-- ═══════════ EASTER EGGS ═══════════ -->
+<div class="stitle">✦ Secretos Mágicos — Toca para revelar ✦</div>
+<div class="eggs-grid">
+  <div class="egg" onclick="toggleEgg(this)">
+    <span class="eico">💌</span><div class="elbl">Lily &amp; James</div>
+    <div class="ehint">✦ toca</div>
+    <div class="etxt">El amor de Lily fue tan poderoso que ninguna maldición pudo vencerlo. El amor verdadero siempre deja marca.</div>
+  </div>
+  <div class="egg" onclick="toggleEgg(this)">
+    <span class="eico">🌙</span><div class="elbl">Always</div>
+    <div class="ehint">✦ toca</div>
+    <div class="etxt">«¿Siempre?» «Siempre.» La frase de amor más corta y más poderosa del mundo mágico. La mía también.</div>
+  </div>
+  <div class="egg" onclick="toggleEgg(this)">
+    <span class="eico">🕊️</span><div class="elbl">Hedwig</div>
+    <div class="ehint">✦ toca</div>
+    <div class="etxt">Hedwig era la primera amiga real de Harry. Símbolo del amor incondicional que nunca abandona.</div>
+  </div>
+  <div class="egg" onclick="toggleEgg(this)">
+    <span class="eico">💛</span><div class="elbl">Ron &amp; Hermione</div>
+    <div class="ehint">✦ toca</div>
+    <div class="etxt">Los opuestos se atraen incluso en Hogwarts. J.K. dijo que su amor estaría lleno de risas y magia real.</div>
+  </div>
+  <div class="egg" onclick="toggleEgg(this)">
+    <span class="eico">🌹</span><div class="elbl">Amortentia</div>
+    <div class="ehint">✦ toca</div>
+    <div class="etxt">No crea amor real — solo obsesión. El amor verdadero nace libre. El nuestro nació completamente libre.</div>
+  </div>
+  <div class="egg" onclick="toggleEgg(this)">
+    <span class="eico">⚡</span><div class="elbl">La Cicatriz</div>
+    <div class="ehint">✦ toca</div>
+    <div class="etxt">La cicatriz de Harry duele cuando Voldemort está cerca. La mía duele cuando tú no estás. Eres mi Hogwarts.</div>
+  </div>
+  <div class="egg" onclick="toggleEgg(this)">
+    <span class="eico">🪄</span><div class="elbl">Elder Wand</div>
+    <div class="ehint">✦ toca</div>
+    <div class="etxt">Harry rompió la Varita de Saúco. Prefirió vivir sin poder absoluto. Contigo prefiero vivir sin nada más.</div>
+  </div>
+  <div class="egg" onclick="toggleEgg(this)">
+    <span class="eico">🏰</span><div class="elbl">Hogwarts</div>
+    <div class="ehint">✦ toca</div>
+    <div class="etxt">«Hogwarts será siempre tu hogar.» Para mí el hogar no es un castillo — es estar donde tú estás.</div>
+  </div>
+  <div class="egg" onclick="toggleEgg(this)">
+    <span class="eico">🧹</span><div class="elbl">Nimbus 2000</div>
+    <div class="ehint">✦ toca</div>
+    <div class="etxt">Harry voló en la mejor escoba del mundo. Pero nada se compara con el vuelo que siento cuando me sonríes.</div>
+  </div>
+</div>
+
+<div class="div" style="margin-top:14px"><div class="dline"></div><span class="dsym">💛</span><div class="dline"></div></div>
+
+<!-- ═══════════ SNITCH ═══════════ -->
+<div class="stitle">✦ ¡Atrapa la Snitch del Amor! ✦</div>
+<div class="snitch-section">
+  <div class="snitch-arena" id="arena">
+    <canvas class="arena-canvas" id="arenaStars"></canvas>
+    <div id="snitchEl">
+      <div class="s-wing s-wing-l" id="wingL"></div>
+      <div class="s-ball"></div>
+      <div class="s-wing s-wing-r" id="wingR"></div>
+    </div>
+  </div>
+  <div class="snitch-msg" id="snitchMsg">💛 ¡Toca la Snitch Dorada para atraparla!</div>
+  <div class="snitch-tip">— Se mueve sola, ¡no la pierdas de vista —</div>
+</div>
+
+<div class="div" style="margin-top:14px"><div class="dline"></div><span class="dsym">✨</span><div class="dline"></div></div>
+
+<!-- ═══════════ ALWAYS ═══════════ -->
+<div class="always-section">
+  <div class="always-word">Siempre.</div>
+  <div class="always-sub">— Siempre te elegiré, brujita —</div>
+</div>
+
+<!-- ═══════════ CASTLE SVG ═══════════ -->
+<div class="castle-section">
+  <svg width="100%" height="115" viewBox="0 0 400 115" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="moonG" cx="78%" cy="15%" r="22%">
+        <stop offset="0%" stop-color="rgba(255,200,230,.14)"/>
+        <stop offset="100%" stop-color="transparent"/>
+      </radialGradient>
+    </defs>
+    <rect width="400" height="115" fill="url(#moonG)"/>
+    <!-- Moon -->
+    <circle cx="320" cy="22" r="15" fill="rgba(255,240,200,.14)" stroke="rgba(255,220,150,.25)" stroke-width="1"/>
+    <circle cx="325" cy="19" r="12" fill="rgba(8,0,14,.9)"/>
+    <!-- Stars -->
+    <text x="55" y="22" font-size="7" fill="rgba(255,200,220,.45)">✦</text>
+    <text x="142" y="15" font-size="6" fill="rgba(255,200,220,.5)">✦</text>
+    <text x="270" y="38" font-size="6" fill="rgba(255,200,220,.4)">✦</text>
+    <!-- LEFT TOWER -->
+    <rect x="18" y="52" width="30" height="63" fill="rgba(18,4,14,.85)"/>
+    <rect x="14" y="42" width="38" height="14" fill="rgba(18,4,14,.85)"/>
+    <rect x="14" y="35" width="8" height="10" fill="rgba(18,4,14,.85)"/>
+    <rect x="26" y="35" width="8" height="10" fill="rgba(18,4,14,.85)"/>
+    <rect x="38" y="35" width="8" height="10" fill="rgba(18,4,14,.85)"/>
+    <rect x="27" y="62" width="10" height="14" rx="4" fill="rgba(255,200,100,.42)"/>
+    <!-- MAIN BUILDING -->
+    <rect x="48" y="65" width="95" height="50" fill="rgba(14,3,11,.88)"/>
+    <rect x="75" y="54" width="22" height="16" fill="rgba(14,3,11,.88)"/>
+    <rect x="60" y="72" width="14" height="16" rx="4" fill="rgba(255,150,180,.3)"/>
+    <rect x="112" y="68" width="12" height="15" rx="4" fill="rgba(255,200,100,.38)"/>
+    <!-- CENTER GREAT TOWER -->
+    <rect x="148" y="28" width="50" height="87" fill="rgba(16,3,12,.9)"/>
+    <polygon points="148,28 173,4 198,28" fill="rgba(28,6,20,.9)"/>
+    <rect x="158" y="42" width="14" height="20" rx="5" fill="rgba(255,150,200,.32)"/>
+    <rect x="158" y="72" width="14" height="20" rx="5" fill="rgba(255,200,100,.4)"/>
+    <!-- RIGHT BUILDING -->
+    <rect x="198" y="55" width="88" height="60" fill="rgba(14,3,11,.88)"/>
+    <rect x="212" y="42" width="28" height="18" fill="rgba(14,3,11,.88)"/>
+    <rect x="200" y="46" width="8" height="10" fill="rgba(14,3,11,.88)"/>
+    <rect x="212" y="46" width="8" height="10" fill="rgba(14,3,11,.88)"/>
+    <rect x="224" y="46" width="8" height="10" fill="rgba(14,3,11,.88)"/>
+    <rect x="236" y="46" width="8" height="10" fill="rgba(14,3,11,.88)"/>
+    <rect x="210" y="65" width="13" height="15" rx="4" fill="rgba(255,200,100,.42)"/>
+    <rect x="238" y="70" width="13" height="15" rx="4" fill="rgba(255,150,180,.32)"/>
+    <!-- FAR RIGHT TOWER -->
+    <rect x="290" y="44" width="36" height="71" fill="rgba(16,3,12,.88)"/>
+    <polygon points="290,44 308,20 326,44" fill="rgba(24,5,18,.88)"/>
+    <rect x="298" y="60" width="12" height="15" rx="4" fill="rgba(255,200,100,.38)"/>
+    <!-- ASTRONOMY TOWER -->
+    <rect x="330" y="50" width="52" height="65" fill="rgba(12,2,10,.9)"/>
+    <rect x="326" y="38" width="60" height="16" fill="rgba(12,2,10,.9)"/>
+    <rect x="326" y="32" width="8" height="10" fill="rgba(12,2,10,.9)"/>
+    <rect x="338" y="32" width="8" height="10" fill="rgba(12,2,10,.9)"/>
+    <rect x="350" y="32" width="8" height="10" fill="rgba(12,2,10,.9)"/>
+    <rect x="362" y="32" width="8" height="10" fill="rgba(12,2,10,.9)"/>
+    <rect x="374" y="32" width="8" height="10" fill="rgba(12,2,10,.9)"/>
+    <rect x="338" y="58" width="12" height="15" rx="4" fill="rgba(255,150,180,.38)"/>
+    <rect x="358" y="64" width="12" height="15" rx="4" fill="rgba(255,200,100,.42)"/>
+    <!-- BLACK LAKE REFLECTION -->
+    <ellipse cx="200" cy="113" rx="185" ry="7" fill="rgba(12,4,22,.65)"/>
+    <!-- Reflection glow -->
+    <ellipse cx="173" cy="112" rx="22" ry="3" fill="rgba(255,200,100,.08)"/>
+    <ellipse cx="330" cy="112" rx="16" ry="3" fill="rgba(255,150,180,.07)"/>
+    <!-- Flying owl -->
+    <text x="68" y="26" font-size="10" fill="rgba(255,200,220,.45)" id="castleOwl">🦉</text>
+  </svg>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<div class="final-quote">
+  <div class="fq">
+    «¿Después de todo este tiempo?»<br>
+    «Siempre.»<br><br>
+    Y yo también. Siempre, brujita.
+  </div>
+  <div class="fqa">— Para ti, con toda la magia del mundo ✨</div>
+</div>
+
+</div><!-- end page-bg -->
+
+<!-- ═══════════ POPUP ═══════════ -->
+<div class="overlay" id="ov" onclick="closeSpell(event)">
+  <div class="popup">
+    <span class="pico-big" id="pico">💕</span>
+    <div class="pname" id="pname"></div>
+    <div class="pdesc" id="pdesc"></div>
+    <button class="pclose" onclick="closeSpell()">✦ Cerrar ✦</button>
+  </div>
+</div>
+
+<script>
+/* ── WAND TRAIL ── */
+(function(){
+  var canvas=document.getElementById('wandTrail');
+  var ctx=canvas.getContext('2d');
+  var W,H,particles=[];
+  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+  resize();
+  window.addEventListener('resize',resize);
+  var colors=['#ff69b4','#e040fb','#ff9ecd','#ffd700','#ffb3d1','#ff1493','#c0e0ff'];
+  function add(x,y){
+    for(var i=0;i<4;i++){
+      var a=Math.random()*Math.PI*2;
+      var spd=Math.random()*2+0.5;
+      particles.push({x:x,y:y,vx:Math.cos(a)*spd*(Math.random()<0.5?1:-1)*0.6,vy:Math.sin(a)*spd-0.8,r:Math.random()*4+2,c:colors[Math.floor(Math.random()*colors.length)],a:0.9});
+    }
+  }
+  var lx,ly;
+  function move(x,y){
+    if(lx!==undefined&&Math.hypot(x-lx,y-ly)>6)add(x,y);
+    lx=x;ly=y;
+  }
+  document.addEventListener('mousemove',function(e){move(e.clientX,e.clientY);});
+  document.addEventListener('touchmove',function(e){
+    var t=e.touches[0];move(t.clientX,t.clientY);
+  },{passive:true});
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=particles.length-1;i>=0;i--){
+      var p=particles[i];
+      p.x+=p.vx;p.y+=p.vy;p.vy+=0.06;p.a-=0.022;p.r*=0.97;
+      if(p.a<=0||p.r<0.4){particles.splice(i,1);continue;}
+      ctx.save();ctx.globalAlpha=p.a;ctx.fillStyle=p.c;
+      ctx.shadowColor=p.c;ctx.shadowBlur=7;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.28);ctx.fill();
+      ctx.restore();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── PARTICLES ── */
+(function(){
+  var c=document.getElementById('ptc');
+  var emos=['💖','✨','⚡','🌟','💫','🌹','💕','✦','♥','💛','🪄','🦉','🔮','🌙'];
+  for(var i=0;i<30;i++){
+    var p=document.createElement('div');p.className='p';
+    p.textContent=emos[Math.floor(Math.random()*emos.length)];
+    p.style.cssText='left:'+Math.random()*100+'%;--d:'+(7+Math.random()*11)+'s;--dl:'+(Math.random()*13)+'s;--s:'+(8+Math.random()*13)+'px;';
+    c.appendChild(p);
+  }
+})();
+
+/* ── MAPA DEL MERODEADOR ── */
+(function(){
+  var canvas=document.getElementById('mapCanvas');
+  var wrap=canvas.parentElement;
+  function setSize(){canvas.width=wrap.clientWidth||380;canvas.height=130;}
+  setSize();
+  window.addEventListener('resize',function(){setSize();});
+  var ctx=canvas.getContext('2d');
+
+  function W(){return canvas.width;}
+  var H=130;
+
+  var people=[
+    {name:'Tú ♥',color:'#5a2800',trail:[]},
+    {name:'Yo 🪄',color:'#3d1500',trail:[]},
+    {name:'Harry ⚡',color:'#4a2000',trail:[]},
+    {name:'Hermione',color:'#2d1000',trail:[]},
+    {name:'Ron',color:'#3a1800',trail:[]}
+  ];
+
+  function getWps(i){
+    var w=W();
+    var sets=[
+      [{x:0,y:30},{x:w*.22,y:55},{x:w*.42,y:18},{x:w*.62,y:65},{x:w*.82,y:32},{x:w,y:50}],
+      [{x:0,y:62},{x:w*.28,y:88},{x:w*.5,y:48},{x:w*.72,y:92},{x:w,y:62}],
+      [{x:w,y:90},{x:w*.78,y:58},{x:w*.58,y:102},{x:w*.38,y:52},{x:w*.18,y:88},{x:0,y:65}],
+      [{x:w*.5,y:42},{x:w*.72,y:18},{x:w*.9,y:52},{x:w*.68,y:82},{x:w*.38,y:52},{x:w*.1,y:38},{x:w*.5,y:42}],
+      [{x:w*.3,y:78},{x:w*.52,y:102},{x:w*.72,y:62},{x:w*.9,y:90},{x:w*.58,y:42},{x:w*.2,y:78}]
+    ];
+    return sets[i];
+  }
+
+  var progress=[0,0.32,0.61,0.17,0.48];
+  var speeds=[0.24,0.19,0.31,0.21,0.27];
+  var frameCount=0;
+
+  function lerp(a,b,t){return a+(b-a)*t;}
+
+  function animate(){
+    var w=W();
+    ctx.clearRect(0,0,w,H);
+    frameCount++;
+
+    // Room labels
+    ctx.globalAlpha=0.18;ctx.fillStyle='#3a1a00';
+    ctx.font="italic 8px 'IM Fell English',serif";
+    ctx.fillText('Gran Salón',4,13);
+    ctx.fillText('Torre Gryffindor',w*.56,13);
+    ctx.fillText('Biblioteca',w*.84,38);
+    ctx.globalAlpha=1;
+
+    people.forEach(function(p,i){
+      var wps=getWps(i);
+      progress[i]+=speeds[i]/100;
+      var total=wps.length-1;
+      var t=progress[i]%total;
+      var seg=Math.floor(t);
+      var frac=t-seg;
+      var a=wps[seg%wps.length];
+      var b=wps[(seg+1)%wps.length];
+      var px=lerp(a.x,b.x,frac);
+      var py=lerp(a.y,b.y,frac);
+      var angle=Math.atan2(b.y-a.y,b.x-a.x)+Math.PI/2;
+
+      p.trail.push({x:px,y:py,age:0});
+      if(p.trail.length>28)p.trail.shift();
+      p.trail.forEach(function(t){t.age++;});
+
+      // Footprints
+      p.trail.filter(function(_,j){return j%5===0;}).forEach(function(pt){
+        ctx.globalAlpha=Math.max(0,0.38-pt.age*0.014);
+        ctx.fillStyle=p.color;
+        ctx.beginPath();ctx.ellipse(pt.x,pt.y,2.4,4,angle,0,Math.PI*2);ctx.fill();
+      });
+
+      // Dot pulse
+      var pulse=0.8+0.2*Math.sin(frameCount*0.12+i);
+      ctx.globalAlpha=1;ctx.fillStyle=p.color;
+      ctx.beginPath();ctx.arc(px,py,4*pulse,0,Math.PI*2);ctx.fill();
+
+      // Halo
+      ctx.globalAlpha=0.32;ctx.strokeStyle=p.color;ctx.lineWidth=1;
+      ctx.beginPath();ctx.arc(px,py,7*pulse,0,Math.PI*2);ctx.stroke();
+      ctx.globalAlpha=1;
+
+      // Name label
+      ctx.font="italic 9px 'IM Fell English',serif";
+      ctx.fillStyle=p.color;ctx.globalAlpha=0.95;
+      ctx.fillText(p.name,px+8,py-5);
+      ctx.globalAlpha=1;
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+/* ── CAULDRON ANIMATION ── */
+(function(){
+  var b1=document.getElementById('b1');
+  var b2=document.getElementById('b2');
+  var b3=document.getElementById('b3');
+  var b4=document.getElementById('b4');
+  var s1=document.getElementById('s1');
+  var s2=document.getElementById('s2');
+  var s3=document.getElementById('s3');
+  var sh1=document.getElementById('sh1');
+  var sh2=document.getElementById('sh2');
+  var ps=document.getElementById('potionSurface');
+  var t=0;
+  function anim(){
+    t+=0.04;
+    // Bubbles rise and pop
+    var y1=100-Math.abs(Math.sin(t*1.3))*22;
+    b1.setAttribute('cy',y1);b1.setAttribute('r',6-Math.abs(Math.sin(t*1.3))*4);b1.setAttribute('opacity',0.4+0.3*Math.sin(t));
+    var y2=96-Math.abs(Math.sin(t*0.9+1))*28;
+    b2.setAttribute('cy',y2);b2.setAttribute('r',8-Math.abs(Math.sin(t*0.9))*5);b2.setAttribute('opacity',0.32+0.28*Math.sin(t+1));
+    var y3=105-Math.abs(Math.sin(t*1.1+2))*20;
+    b3.setAttribute('cy',y3);b3.setAttribute('r',5-Math.abs(Math.sin(t*1.1))*3);b3.setAttribute('opacity',0.42+0.28*Math.sin(t+2));
+    var y4=102-Math.abs(Math.sin(t*1.4+3))*18;
+    b4.setAttribute('cy',y4);b4.setAttribute('r',4-Math.abs(Math.sin(t*1.4))*2.5);b4.setAttribute('opacity',0.38+0.25*Math.sin(t+3));
+    // Steam
+    s1.setAttribute('transform','translate('+Math.sin(t*0.5)*7+','+(-Math.abs(Math.sin(t*0.7))*32)+')');
+    s1.setAttribute('opacity',0.15-Math.abs(Math.sin(t*0.7))*0.12);
+    s2.setAttribute('transform','translate('+Math.sin(t*0.4+1)*9+','+(-Math.abs(Math.sin(t*0.5+0.5))*42)+')');
+    s2.setAttribute('opacity',0.12-Math.abs(Math.sin(t*0.5))*0.1);
+    s3.setAttribute('transform','translate('+Math.sin(t*0.6+2)*7+','+(-Math.abs(Math.sin(t*0.6+1))*30)+')');
+    s3.setAttribute('opacity',0.15-Math.abs(Math.sin(t*0.6))*0.12);
+    // Rising hearts
+    sh1.setAttribute('y',48-Math.abs(Math.sin(t*0.7))*36);
+    sh1.setAttribute('opacity',0.55-Math.abs(Math.sin(t*0.7))*0.5);
+    sh2.setAttribute('y',44-Math.abs(Math.sin(t*0.8+1))*30);
+    sh2.setAttribute('opacity',0.5-Math.abs(Math.sin(t*0.8+1))*0.45);
+    // Potion color pulse
+    var r=Math.floor(74+Math.sin(t*0.5)*22);
+    var bl=Math.floor(48+Math.sin(t*0.5+1)*22);
+    ps.setAttribute('fill','rgb('+r+',0,'+bl+')');
+    requestAnimationFrame(anim);
+  }
+  anim();
+})();
+
+/* ── ARENA STARS ── */
+(function(){
+  var c=document.getElementById('arenaStars');
+  var arena=document.getElementById('arena');
+  function resize(){
+    c.width=arena.clientWidth||380;
+    c.height=arena.clientHeight||180;
+  }
+  resize();
+  window.addEventListener('resize',resize);
+  var ctx=c.getContext('2d');
+  var stars=[];
+  for(var i=0;i<65;i++)stars.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.4+0.3,t:Math.random()*Math.PI*2,pink:Math.random()<0.1});
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    stars.forEach(function(s){
+      s.t+=0.02;
+      var a=0.2+0.8*Math.abs(Math.sin(s.t));
+      ctx.globalAlpha=a;
+      ctx.fillStyle=s.pink?'#ff69b4':'#fff8e0';
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,6.28);ctx.fill();
+    });
+    ctx.globalAlpha=1;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── SNITCH ── */
+(function(){
+  var arena=document.getElementById('arena');
+  var el=document.getElementById('snitchEl');
+  var wingL=document.getElementById('wingL');
+  var wingR=document.getElementById('wingR');
+  var W=arena.clientWidth||380;
+  var H=arena.clientHeight||180;
+  var sx=W/2,sy=H/2,vx=2.2,vy=1.4;
+  var wingAngle=0,wingDir=1,tick=0;
+  window.addEventListener('resize',function(){W=arena.clientWidth||380;H=arena.clientHeight||180;});
+  function flapWings(){
+    wingAngle+=wingDir*14;
+    if(wingAngle>55||wingAngle<-10)wingDir*=-1;
+    var sc=(0.3+0.7*Math.abs(Math.cos(wingAngle*Math.PI/180)));
+    wingL.style.transform='translateY(-50%) rotate('+(- wingAngle)+'deg) scaleY('+sc+')';
+    wingR.style.transform='translateY(-50%) rotate('+(wingAngle)+'deg) scaleX(-1) scaleY('+sc+')';
+  }
+  function move(){
+    tick++;
+    if(tick%160===0){var a=Math.random()*Math.PI*2;vx=Math.cos(a)*(1.8+Math.random()*1.2);vy=Math.sin(a)*(1.8+Math.random()*1.2);}
+    sx+=vx;sy+=vy;
+    if(sx<10){sx=10;vx=Math.abs(vx)+Math.random()*0.5;}
+    if(sx>W-10){sx=W-10;vx=-(Math.abs(vx)+Math.random()*0.5);}
+    if(sy<10){sy=10;vy=Math.abs(vy)+Math.random()*0.5;}
+    if(sy>H-10){sy=H-10;vy=-(Math.abs(vy)+Math.random()*0.5);}
+    vx+=(W/2-sx)*0.0003;vy+=(H/2-sy)*0.0003;
+    var spd=Math.sqrt(vx*vx+vy*vy);
+    if(spd>3.2){vx=vx/spd*3.2;vy=vy/spd*3.2;}
+    if(spd<1){vx*=1.15;vy*=1.15;}
+    el.style.left=sx+'px';el.style.top=sy+'px';
+    flapWings();
+    requestAnimationFrame(move);
+  }
+  move();
+
+  // Click / Touch catch
+  var sN=0;
+  var smsgs=[
+    '💛 ¡Toca la Snitch Dorada para atraparla!',
+    '¡+150 pts! ⚡ ¡Eres increíble, brujita!',
+    '¡300 pts! 🏆 ¡El Quidditch nunca fue tan romántico!',
+    '¡450 pts! 💕 Mejor Buscadora de Hogwarts',
+    '¡600 pts! ✨ Ni Harry la atrapó tan rápido',
+    '¡750 pts! 🌟 ¡LEYENDA del amor y del Quidditch!'
+  ];
+  function catchSnitch(){
+    sN++;
+    el.style.filter='drop-shadow(0 0 22px rgba(255,215,0,1)) drop-shadow(0 0 42px rgba(255,100,180,.9))';
+    el.style.transform='translate(-50%,-50%) scale(1.65)';
+    setTimeout(function(){el.style.filter='';el.style.transform='translate(-50%,-50%) scale(1)';},420);
+    document.getElementById('snitchMsg').textContent=smsgs[Math.min(sN,smsgs.length-1)];
+    spawnConfetti();
+  }
+  el.addEventListener('click',catchSnitch);
+  el.addEventListener('touchstart',function(e){e.preventDefault();catchSnitch();},{passive:false});
+})();
+
+/* ── CONFETTI ── */
+function spawnConfetti(){
+  var emos=['💖','💕','❤️','💗','💓','✨','🌹','⚡','🌟','💛','🪄','🔮'];
+  for(var i=0;i<12;i++){
+    var e=document.createElement('div');e.className='ch';
+    e.textContent=emos[Math.floor(Math.random()*emos.length)];
+    e.style.cssText='--x:'+(4+Math.random()*92)+'%;--d:'+(1.1+Math.random()*1.6)+'s;--s:'+(12+Math.random()*16)+'px;animation-delay:'+(Math.random()*.4)+'s;';
+    document.body.appendChild(e);
+    setTimeout(function(){e.remove();},2900);
+  }
+}
+
+/* ── CORAZON ── */
+var hN=0;
+var hmsgs=[
+  'Toca el corazón ♥',
+  '¡+1 latido! 💕 Brujita...',
+  '¡El amor crece! 💖',
+  '¡Más poderoso que Amortentia! 🌹',
+  '¡Mejor que volar en escoba! 🧹',
+  '¡Dumbledore aprobaría! 🧙',
+  '¡El Sombrero dice: Amor! 🎩',
+  '¡Eres mi Patronus, brujita! 🦌',
+  '¡Siempre, siempre, siempre! ✨',
+  '¡Hogwarts no tiene nada contigo! 🏰',
+  '¡Paro en: ∞ latidos! 💗'
+];
+function heartClick(){
+  hN++;
+  var h=document.getElementById('bigHeart');
+  var m=document.getElementById('heartMsg');
+  h.style.filter='drop-shadow(0 0 42px rgba(255,20,147,1)) drop-shadow(0 0 65px rgba(224,64,251,.8))';
+  h.style.transform='scale(1.55)';
+  setTimeout(function(){h.style.filter='';h.style.transform='';},360);
+  m.textContent=hmsgs[Math.min(hN,hmsgs.length-1)]+(hN>1?' (×'+hN+')':'');
+  spawnConfetti();
+}
+
+/* ── HECHIZOS ── */
+function openSpell(ico,n,d){
+  document.getElementById('pico').textContent=ico;
+  document.getElementById('pname').textContent=n;
+  document.getElementById('pdesc').textContent=d;
+  document.getElementById('ov').classList.add('on');
+  spawnConfetti();
+}
+function closeSpell(ev){
+  if(!ev||ev.target===document.getElementById('ov')||ev.currentTarget.classList.contains('pclose'))
+    document.getElementById('ov').classList.remove('on');
+}
+
+/* ── EASTER EGGS ── */
+function toggleEgg(el){
+  el.classList.toggle('open');
+  if(el.classList.contains('open'))spawnConfetti();
+}
+</script>
+</body>
+</html>
